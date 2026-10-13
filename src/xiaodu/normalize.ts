@@ -51,7 +51,7 @@ export function speaker(raw: RawObject): Speaker {
     clientId: requiredText(raw.client_id ?? raw.clientId, "speaker clientId"),
     cuid: requiredText(raw.cuid, "speaker cuid"),
     name: requiredText(raw.name, "speaker name"), product: text(raw.product),
-    online: typeof raw.online_status === "boolean" ? raw.online_status : null,
+    online: typeof (raw.online_status ?? raw.onlineStatus) === "boolean" ? (raw.online_status ?? raw.onlineStatus) as boolean : null,
     roomName: text(raw.groupName ?? raw.group_name), firmwareVersion: text(raw.device_version), raw,
   };
 }

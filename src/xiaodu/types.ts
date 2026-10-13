@@ -114,4 +114,53 @@ export interface XiaoduClientOptions {
   timeoutMs?: number;
   /** Supply a transport for tests; production uses the runtime's fetch. */
   fetch?: FetchFunction;
+  /** Cross-process locks for scene update + trigger; defaults to this repo's .local/scene-locks. */
+  sceneLockDirectory?: string;
+}
+
+export interface SceneCatalog {
+  mine: Scene[];
+  thirdParty: Scene[];
+  recommended: Scene[];
+  raw: RawObject;
+}
+
+export interface SceneCapabilities {
+  speaker: Speaker;
+  supportsSpeech: boolean;
+  supportsCustomQuery: boolean;
+  raw: RawObject;
+}
+
+export interface SpeechSceneOptions {
+  speaker: string;
+  name?: string;
+  text: string;
+  /** -1 uses the system volume; otherwise an integer percentage from 0 to 100. */
+  volume?: number;
+}
+
+export interface SpeechOptions {
+  speaker: string;
+  sceneId: string;
+  text: string;
+  volume?: number;
+}
+
+export interface SceneRequest {
+  method: "POST";
+  url: string;
+  body: RawObject;
+}
+
+export interface PreparedSceneOperation {
+  verification: "request-construction-only";
+  requests: SceneRequest[];
+}
+
+export interface SceneSubmission {
+  sceneId: string;
+  outcome: "saved" | "accepted";
+  physicalStateVerified: false;
+  raw: RawObject;
 }

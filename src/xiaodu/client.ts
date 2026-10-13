@@ -1,13 +1,17 @@
 import { AirConditioner } from "./air-conditioner.ts";
 import { appliance, house, records, rooms, selectDevice, speaker } from "./normalize.ts";
-import { parseScenes } from "./scenes.ts";
+import { parseScenes, XiaoduScenes } from "./scenes.ts";
 import { requireRecord, XiaoduTransport } from "./transport.ts";
-import type { Snapshot, XiaoduClientOptions } from "./types.ts";
+import type { Snapshot, SpeechOptions, SpeechSceneOptions, XiaoduClientOptions } from "./types.ts";
 
 export class XiaoduClient {
   #transport: XiaoduTransport;
+  #scenes: XiaoduScenes;
 
-  constructor(options: XiaoduClientOptions) { this.#transport = new XiaoduTransport(options); }
+  constructor(options: XiaoduClientOptions) {
+    this.#transport = new XiaoduTransport(options);
+    this.#scenes = new XiaoduScenes(this.#transport, options.sceneLockDirectory);
+  }
 
   async getSnapshot(): Promise<Snapshot> {
     const response = await this.#transport.request("appliances", { body: { method: "GET_USER_ALL_APPLIANCES", params: { from: "h5_control", withscene: 1, generalscene: 3, version: "2.0" } } });
@@ -22,6 +26,15 @@ export class XiaoduClient {
   async listSpeakers() { return (await this.getSnapshot()).speakers; }
   async listAppliances() { return (await this.getSnapshot()).appliances; }
   async listScenes() { return (await this.getSnapshot()).scenes; }
+  getSceneCatalog() { return this.#scenes.catalog(); }
+  getSceneCapabilities(speaker: string) { return this.#scenes.capabilities(speaker); }
+  getSceneDetail(scene: string) { return this.#scenes.detail(scene); }
+  previewRunScene(scene: string) { return this.#scenes.previewRun(scene); }
+  runScene(scene: string) { return this.#scenes.run(scene); }
+  previewCreateSpeechScene(input: SpeechSceneOptions) { return this.#scenes.previewCreateSpeech(input); }
+  createSpeechScene(input: SpeechSceneOptions) { return this.#scenes.createSpeech(input); }
+  previewSpeech(input: SpeechOptions) { return this.#scenes.previewSpeech(input); }
+  speak(input: SpeechOptions) { return this.#scenes.speak(input); }
 
   async listRooms() {
     const response = await this.#transport.request("rooms", { method: "GET", query: { from: "H5", method: "GROUP_INFO" } });

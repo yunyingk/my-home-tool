@@ -2,9 +2,11 @@
 
 用 Bun + TypeScript 封装个人智能家居工具，供 AI agent 调用。
 
-当前发布版本：`0.1.1`，Git tag：`v0.1.1`；变更记录见 [CHANGELOG](CHANGELOG.md)。
+当前版本：`0.2.0`，Git tag：`v0.2.0`；此前版本保留为 `v0.1.0`、`v0.1.1`。变更记录见 [CHANGELOG](CHANGELOG.md)。
 
 当前状态：第一版 SDK 与 JSON CLI 已实现。只读查询通过当前账号的集成验证；空调控制通过请求组装测试和 dry-run，尚未进行实机控制验证。
+
+场景/TTS 扩展已完成实现、协议测试和当前账号的创建、更新、触发及回读验证；服务端返回“已执行”，实际发声尚未由人确认，详见 [场景扩展实施报告](docs/scenes-implementation.md)。
 
 运行时直接请求小度服务，使用自己的 BDUSS 会话；无需安卓、容器或浏览器常驻。
 
@@ -14,6 +16,8 @@
 - [脱敏请求样本](docs/evidence/observed-requests.json)
 - [网页脚本证据](docs/evidence/source-notes.json)
 - [SDK 和 CLI 的只读集成验证](docs/evidence/sdk-integration-2026-10-13.json)
+- [场景能力和创建请求的只读验证](docs/evidence/scenes-integration-2026-10-13.json)
+- [场景创建、更新与触发验证](docs/evidence/scenes-live-test-2026-10-13.json)
 
 安装依赖：
 
@@ -116,6 +120,40 @@ const preview = await air.preview({ action: "turnOff" });
 - 请求不自动重试。写入超时或网络错误的 `outcome: "unknown"` 表示结果未知；温度、风速增减不应盲目重复。
 - 增减动作依据当前模式的真实能力范围及平台记录校验；模式或状态缺失时拒绝发送。平台记录可能滞后，该校验不是对物理状态的测量。
 - `raw` 保留未映射的服务端字段，供协议变化排查；它可能包含账号下的设备标识等私人信息，不宜作为公开日志分享。
-- 场景仅提供元数据查询；没有实现场景创建/执行、TTS、音量、音乐播放、绝对值温度/风速设置、多家庭切换或 MCP server。
+- 场景创建/执行和 TTS 的服务端链路已实测，发声未确认；自定义文字指令、独立音量/音乐播放、绝对值温度/风速设置、多家庭切换和 MCP server 仍未实现。
 
 测试样本根据已脱敏的真实抓包结构整理，设备标识替换为固定测试值。`bun test` 默认不联网、不控制设备。
+
+## 场景与文字播报
+
+保留 `scenes` / `listScenes()` 原有的首页场景元数据；新增 `scene-catalog` / `getSceneCatalog()` 读取服务端完整目录。当前账号有 23 个推荐场景，以及已创建的专用场景 `my-home-tool播报`。
+
+只读查询与创建预览：
+
+```bash
+bun run --silent cli scene-catalog
+bun run --silent cli scene-capabilities "小度1s"
+bun run --silent cli say "小度1s" "my-home-tool播报" "my-home-tool 播报测试成功。" --dry-run
+```
+
+以下命令去掉 `--dry-run` 会保存或执行场景。实际创建后，将返回的 sceneId 用于后续操作：
+
+```bash
+bun run --silent cli scene-detail <sceneId>
+bun run --silent cli scene-run <sceneId> --dry-run
+bun run --silent cli say "小度1s" <sceneId> "要播报的文字" --dry-run
+```
+
+`speech-scene` 默认为专用场景名 `my-home-tool播报`，可通过 `--name` 指定以 `my-home-tool` 开头的名称。同名已存在时拒绝创建，不覆盖。
+
+在尚无专用场景的账号上可用 `speech-scene <音箱> <文本> --dry-run` 预览创建，再明确执行。当前账号的场景已创建，直接使用 `say` 即可；重复创建会返回 `SCENE_NAME_CONFLICT`。
+
+`say` 先读取并检查专用场景，要求只有一个 TTS 动作、目标音箱匹配、没有定时或自动条件，再更新文本并触发。正文上限为 300 个 UTF-16 字符，与当前页面的 textarea 限制一致。
+
+`--volume -1` 为系统音量；其他整数值 0–100 表示自定义音量。该字段是播报场景的音量参数，不是独立设置音箱全局音量的方法。
+
+SDK 方法：`getSceneCatalog()`、`getSceneCapabilities(speaker)`、`getSceneDetail(scene)`、`previewRunScene(scene)`、`runScene(scene)`、`previewCreateSpeechScene(input)`、`createSpeechScene(input)`、`previewSpeech(input)`、`speak(input)`。
+
+更新与触发使用本项目 `.local/scene-locks` 下的文件锁，独立 CLI 进程共享锁；占用时返回 `SCENE_BUSY`，不排队、不自动抢锁。SDK 部署到只读目录时可通过 `sceneLockDirectory` 指定可写的私有目录。进程异常退出可能留下锁，恢复前应确认持有进程已结束。
+
+锁覆盖更新和触发的提交过程，不保证音箱播放完成。如果更新成功但触发失败，已保存文本不会自动回滚；错误中的 `phase` 区分 `update` 和 `trigger`，避免重复操作。

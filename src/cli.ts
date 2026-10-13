@@ -14,12 +14,22 @@ const HELP = `my-home-tool — Bun + TypeScript 小度工具
   speakers | appliances       音箱 / 家电
   rooms | houses | scenes      房间 / 家庭 / 场景元数据
   bindings <speaker-id|name>   音箱绑定的红外家电
+  scene-catalog               完整场景目录（我的 / 第三方 / 推荐）
+  scene-capabilities <speaker> 场景内的音箱能力
+  scene-detail <scene>        已保存场景详情
 
 空调：
   air <device-id|name> on|off
   air <device-id|name> mode COOL|HEAT|AUTO|FAN|DEHUMIDIFICATION
   air <device-id|name> temp-up|temp-down|fan-up|fan-down
   上述 air 命令可加 --dry-run：只读取设备并预览请求，不发送控制。
+
+场景与播报：
+  scene-run <scene> [--dry-run]
+  speech-scene <speaker> <text> [--name my-home-tool播报] [--volume -1] [--dry-run]
+  say <speaker> <scene> <text> [--volume -1] [--dry-run]
+  speech-scene 创建专用单 TTS 场景；say 更新该场景后触发。文本上限 300 字。
+  --dry-run 只查询并预览；去掉该参数会保存场景或触发播报。
 
 认证：XIAODU_BDUSS 环境变量，或 .local/session.json 中的 bduss 字段。
 成功写 stdout JSON；失败写 stderr JSON 并退出 1。
@@ -31,6 +41,8 @@ interface ParsedArguments {
   sessionFile?: string;
   dryRun: boolean;
   help: boolean;
+  sceneName?: string;
+  volume?: number;
 }
 
 function parseArguments(args: string[]): ParsedArguments {
@@ -43,6 +55,14 @@ function parseArguments(args: string[]): ParsedArguments {
       const next = args[++i];
       if (!next || next.startsWith("--") || result.sessionFile) throw new XiaoduError("INVALID_ARGUMENT", "--session requires one file path.");
       result.sessionFile = next;
+    } else if (arg === "--name") {
+      const next = args[++i];
+      if (!next || next.startsWith("--") || result.sceneName) throw new XiaoduError("INVALID_ARGUMENT", "--name requires one dedicated scene name.");
+      result.sceneName = next;
+    } else if (arg === "--volume") {
+      const next = args[++i];
+      if (!next || !/^-?\d+$/.test(next) || result.volume !== undefined) throw new XiaoduError("INVALID_ARGUMENT", "--volume requires one integer percentage or -1.");
+      result.volume = Number(next);
     } else if (arg.startsWith("--")) throw new XiaoduError("INVALID_ARGUMENT", "Unknown option. Run with --help.");
     else result.words.push(arg);
   }
@@ -80,10 +100,17 @@ export async function runCli(args: string[] = Bun.argv.slice(2)): Promise<void> 
     if (parsed.help || parsed.words.length === 0) { console.log(HELP); return; }
     const command = parsed.words[0]!;
     let airCommand: AirConditionerCommand | undefined;
-    if (command === "air") airCommand = parseAirCommand(parsed.words);
+    if (command === "air") {
+      if (parsed.sceneName !== undefined || parsed.volume !== undefined) throw new XiaoduError("INVALID_ARGUMENT", "Speech options cannot be used with air commands.");
+      airCommand = parseAirCommand(parsed.words);
+    } else if (["scene-run", "speech-scene", "say"].includes(command)) {
+      const length = command === "say" ? 4 : command === "speech-scene" ? 3 : 2;
+      if (parsed.words.length !== length || (command !== "speech-scene" && parsed.sceneName !== undefined) || (command === "scene-run" && parsed.volume !== undefined)) throw new XiaoduError("INVALID_ARGUMENT", "Unexpected scene arguments. Run with --help.");
+    }
     else {
-      const valid = ["snapshot", "devices", "speakers", "appliances", "rooms", "houses", "scenes", "bindings"];
-      if (!valid.includes(command) || parsed.words.length !== (command === "bindings" ? 2 : 1) || parsed.dryRun) {
+      const valid = ["snapshot", "devices", "speakers", "appliances", "rooms", "houses", "scenes", "bindings", "scene-catalog", "scene-capabilities", "scene-detail"];
+      const hasTarget = ["bindings", "scene-capabilities", "scene-detail"].includes(command);
+      if (!valid.includes(command) || parsed.words.length !== (hasTarget ? 2 : 1) || parsed.dryRun || parsed.sceneName !== undefined || parsed.volume !== undefined) {
         throw new XiaoduError("INVALID_ARGUMENT", "Unknown command or unexpected arguments. Run with --help.");
       }
     }
@@ -98,6 +125,20 @@ export async function runCli(args: string[] = Bun.argv.slice(2)): Promise<void> 
       case "houses": data = await client.listHouses(); break;
       case "scenes": data = await client.listScenes(); break;
       case "bindings": data = await client.getSpeakerBindings(parsed.words[1]!); break;
+      case "scene-catalog": data = await client.getSceneCatalog(); break;
+      case "scene-capabilities": data = await client.getSceneCapabilities(parsed.words[1]!); break;
+      case "scene-detail": data = await client.getSceneDetail(parsed.words[1]!); break;
+      case "scene-run": data = parsed.dryRun ? await client.previewRunScene(parsed.words[1]!) : await client.runScene(parsed.words[1]!); break;
+      case "speech-scene": {
+        const input = { speaker: parsed.words[1]!, text: parsed.words[2]!, ...(parsed.sceneName ? { name: parsed.sceneName } : {}), ...(parsed.volume !== undefined ? { volume: parsed.volume } : {}) };
+        data = parsed.dryRun ? await client.previewCreateSpeechScene(input) : await client.createSpeechScene(input);
+        break;
+      }
+      case "say": {
+        const input = { speaker: parsed.words[1]!, sceneId: parsed.words[2]!, text: parsed.words[3]!, ...(parsed.volume !== undefined ? { volume: parsed.volume } : {}) };
+        data = parsed.dryRun ? await client.previewSpeech(input) : await client.speak(input);
+        break;
+      }
       case "air": {
         const air = client.airConditioner(parsed.words[1]!);
         data = parsed.dryRun ? await air.preview(airCommand!) : await air.execute(airCommand!);

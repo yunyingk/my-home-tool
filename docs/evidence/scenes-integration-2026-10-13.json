@@ -1,0 +1,107 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "catalog": {
+    "mine": 0,
+    "thirdParty": 0,
+    "recommended": 23
+  },
+  "capability": {
+    "speaker": "小度1s",
+    "online": true,
+    "supportsSpeech": true,
+    "supportsCustomQuery": true
+  },
+  "methods": [
+    "generalScenes",
+    "getSceneAppliances",
+    "generalScenes",
+    "getSceneAppliances",
+    "getRecommendScene"
+  ],
+  "cli": {
+    "exitCode": 0,
+    "jsonOk": true,
+    "verification": "request-construction-only"
+  },
+  "preview": {
+    "verification": "request-construction-only",
+    "requests": [
+      {
+        "method": "POST",
+        "url": "https://xiaodu.baidu.com/saiya/smarthome/unified",
+        "body": {
+          "method": "createScene",
+          "from": "h5",
+          "version": "2.0",
+          "params": {
+            "sceneName": "my-home-tool播报",
+            "sceneType": "CUSTOM",
+            "botId": "__xiao_du_bot__",
+            "isCloseQueryTrigger": false,
+            "extInfo": {
+              "speakerOfflineStatus": {
+                "validTypes": [
+                  "smarthome",
+                  "delay",
+                  "pushApp",
+                  "localMusic"
+                ],
+                "displayConfig": {
+                  "isDeleted": {
+                    "tips": "所选音箱被删除",
+                    "cornerIcon": "https://duerstatic.bj.bcebos.com/scene-offline-icon.png"
+                  },
+                  "offline": {
+                    "tips": "所选音箱离线",
+                    "cornerIcon": "https://duerstatic.bj.bcebos.com/scene-offline-icon.png"
+                  },
+                  "noClient": {
+                    "tips": "无可用音箱",
+                    "cornerIcon": "https://duerstatic.bj.bcebos.com/scene-offline-icon.png"
+                  }
+                }
+              }
+            },
+            "cuid": "<redacted>",
+            "clientId": "<redacted>",
+            "groupName": [
+              "全屋"
+            ],
+            "floorName": "",
+            "queryList": [
+              {
+                "query": "打开my-home-tool播报场景"
+              }
+            ],
+            "timing": [],
+            "conditionTrigger": {
+              "or": [],
+              "and": [],
+              "validperiod": [],
+              "andCondType": 0
+            },
+            "changeDisable": {
+              "sceneEnable": [],
+              "sceneDisable": []
+            },
+            "broadcastRes": {},
+            "sceneBlocks": [
+              {
+                "blockType": "broadcastTTS",
+                "tts": "my-home-tool 播报测试成功。",
+                "cuid": "<redacted>",
+                "clientId": "<redacted>",
+                "volume": -1
+              }
+            ],
+            "isExistSMAppliance": false,
+            "isNewRusScene": false,
+            "source": "normal"
+          }
+        }
+      }
+    ]
+  },
+  "mutatingRequestsSent": 0
+}

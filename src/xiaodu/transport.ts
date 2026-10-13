@@ -7,18 +7,21 @@ const ENDPOINTS = {
   houses: "/saiya/smarthome/multihouse",
   bindings: "/saiya/smarthome/config",
   control: "/saiya/smarthome/directivesend",
+  scenes: "/saiya/smarthome/unified",
 } as const;
 
 export type ErrorCode = "INVALID_CONFIGURATION" | "INVALID_ARGUMENT" | "AUTHENTICATION_REQUIRED" |
   "HTTP_ERROR" | "API_ERROR" | "INVALID_RESPONSE" | "TIMEOUT" | "REQUEST_FAILED" |
   "DEVICE_NOT_FOUND" | "AMBIGUOUS_DEVICE" | "DEVICE_OFFLINE" | "UNSUPPORTED_ACTION" |
-  "OUT_OF_RANGE" | "UNAVAILABLE_STATE" | "COMMAND_REJECTED";
+  "OUT_OF_RANGE" | "UNAVAILABLE_STATE" | "COMMAND_REJECTED" | "SCENE_NOT_FOUND" |
+  "SCENE_NAME_CONFLICT" | "UNSAFE_SCENE" | "SCENE_BUSY";
 
 export interface ErrorDetails {
   httpStatus?: number;
   apiStatus?: number;
   /** A failed write can have reached the server; never infer it is safe to retry. */
   outcome?: "not-sent" | "rejected" | "unknown";
+  phase?: "create" | "update" | "trigger";
 }
 
 export class XiaoduError extends Error {

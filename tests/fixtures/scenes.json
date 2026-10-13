@@ -1,0 +1,23 @@
+{
+  "catalog": {
+    "myScenes": [{
+      "name": "my-home-tool播报", "type": "CUSTOM", "isSet": 1,
+      "trigger": { "sceneParams": { "method": "triggerScene", "params": { "sceneId": "scene-1" } } },
+      "detailScene": { "sceneParams": { "method": "generalDetailScenes", "params": { "sceneId": "scene-1" } } }
+    }],
+    "thirdPartyScenes": [],
+    "recommendScenes": [{ "name": "早安", "type": "MORNING", "isSet": 0, "sceneParams": { "method": "getRecommendScene", "params": { "sceneType": "MORNING" } } }]
+  },
+  "capabilities": {
+    "client": [{ "clientId": "speaker-client-1", "cuid": "speaker-cuid-1", "name": "小度1s", "onlineStatus": true, "product": "小度音箱1S遥控版", "groupName": "大卧室", "supportAbility": { "broadcastTTS": true, "customQuery": true } }],
+    "sceneAbility": { "broadcastTTS": true, "customQuery": true }
+  },
+  "template": { "sceneName": null, "sceneType": "CUSTOM", "botId": "__xiao_du_bot__", "isCloseQueryTrigger": false },
+  "detail": {
+    "sceneId": "scene-1", "sceneName": "my-home-tool播报", "sceneType": "CUSTOM", "cuid": "speaker-cuid-1", "clientId": "speaker-client-1",
+    "queryList": [{ "query": "打开my-home-tool播报场景" }], "timing": [],
+    "conditionTrigger": { "or": [], "and": [], "validperiod": [], "andCondType": 0 },
+    "sceneBlocks": [{ "blockId": "block-1", "blockType": "broadcastTTS", "tts": "之前的文本", "volume": -1, "cuid": "speaker-cuid-1", "clientId": "speaker-client-1" }],
+    "unmappedServerField": { "retained": true }
+  }
+}

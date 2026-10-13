@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "speaker": "小度1s",
+  "sceneName": "my-home-tool播报",
+  "text": "my-home-tool 播报测试成功。",
+  "volume": -1,
+  "writes": [
+    {
+      "method": "createScene",
+      "httpStatus": 200,
+      "businessStatus": 0,
+      "message": "执行成功"
+    },
+    {
+      "method": "updateScene",
+      "httpStatus": 200,
+      "businessStatus": 0,
+      "message": "执行成功"
+    },
+    {
+      "method": "triggerScene",
+      "httpStatus": 200,
+      "businessStatus": 0,
+      "message": "success",
+      "description": "已执行"
+    }
+  ],
+  "savedSceneCount": 1,
+  "readbackMatches": true,
+  "cliResults": [
+    {
+      "command": "scene-catalog",
+      "exitCode": 0,
+      "jsonOk": true
+    },
+    {
+      "command": "say",
+      "exitCode": 0,
+      "jsonOk": true,
+      "verification": "request-construction-only",
+      "methods": [
+        "updateScene",
+        "triggerScene"
+      ]
+    }
+  ],
+  "serverSubmissionVerified": true,
+  "audiblePlaybackVerified": false,
+  "schemaCorrection": "Saved details omit top-level clientId; the TTS block retains cuid/clientId. Updates restore the top-level clientId after validating the block."
+}
