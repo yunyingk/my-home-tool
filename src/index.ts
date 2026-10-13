@@ -1,3 +1,7 @@
+import packageMetadata from "../package.json";
+
+export const VERSION = packageMetadata.version;
+
 export { XiaoduClient } from "./xiaodu/client.ts";
 export { AirConditioner } from "./xiaodu/air-conditioner.ts";
 export { XiaoduError } from "./xiaodu/transport.ts";

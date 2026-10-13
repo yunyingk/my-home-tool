@@ -1,11 +1,12 @@
 #!/usr/bin/env bun
-import { XiaoduClient, XiaoduError } from "./index.ts";
+import { VERSION, XiaoduClient, XiaoduError } from "./index.ts";
 import { isRecord } from "./xiaodu/transport.ts";
 import type { AirConditionerCommand, AirConditionerMode } from "./index.ts";
 
 const HELP = `my-home-tool — Bun + TypeScript 小度工具
 
 用法：bun run cli [--session <file>] <command>
+版本：bun run cli --version
 
 只读：
   snapshot                    完整设备快照（含原始字段）
@@ -74,6 +75,7 @@ async function loadBduss(sessionFile: string | undefined): Promise<string> {
 
 export async function runCli(args: string[] = Bun.argv.slice(2)): Promise<void> {
   try {
+    if (args.length === 1 && ["--version", "-v"].includes(args[0]!)) { console.log(VERSION); return; }
     const parsed = parseArguments(args);
     if (parsed.help || parsed.words.length === 0) { console.log(HELP); return; }
     const command = parsed.words[0]!;
