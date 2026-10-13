@@ -1,0 +1,42 @@
+{
+  "status": 0,
+  "msg": "",
+  "data": {
+    "client": [{
+      "client_id": "speaker-client-1", "cuid": "speaker-cuid-1", "name": "小度1s",
+      "product": "小度音箱1S遥控版", "online_status": true, "groupName": "大卧室",
+      "device_version": "2.30.8.20251105102700"
+    }],
+    "appliances": [{
+      "applianceId": "ac-1", "friendlyName": "格力空调", "botId": "__speaker_ir__",
+      "applianceTypes": ["AIR_CONDITION"], "clientId": "speaker-client-1", "isClientOnline": true,
+      "roomName": "大卧室",
+      "supportActions": ["turnOn", "turnOff", "setTemperature", "incrementTemperature", "decrementTemperature", "setMode", "setFanSpeed", "incrementFanSpeed", "decrementFanSpeed"],
+      "attributes": {
+        "turnOnState": { "value": "OFF", "timestampOfSample": 1791870872 },
+        "temperature": { "value": "24", "timestampOfSample": 1791131701 },
+        "mode": { "value": "制冷", "timestampOfSample": 1787751811 },
+        "fanSpeed": { "value": "2", "timestampOfSample": 1787513564 }
+      },
+      "stateSetting": {
+        "turnOnState": { "value": "OFF", "time": "2026-10-13 13:54:32" },
+        "temperature": { "value": 24, "valueRangeMap": { "min": 0, "max": 60 } },
+        "mode": { "value": "COOL" }, "fanSpeed": { "value": 2 }
+      },
+      "airConditionSupportAttributes": [
+        { "mode": "COOL", "minTemperature": "16", "maxTemperature": "30", "minFanSpeed": "0", "maxFanSpeed": "3" },
+        { "mode": "HEAT", "minTemperature": "16", "maxTemperature": "30", "minFanSpeed": "0", "maxFanSpeed": "3" },
+        { "mode": "AUTO", "minFanSpeed": "0", "maxFanSpeed": "3" },
+        { "mode": "FAN", "minTemperature": "16", "maxTemperature": "30", "minFanSpeed": "0", "maxFanSpeed": "3" },
+        { "mode": "DEHUMIDIFICATION", "minTemperature": "16", "maxTemperature": "30", "minFanSpeed": "1", "maxFanSpeed": "1" }
+      ]
+    }],
+    "sceneInfos": [{ "type": "MORNING", "name": "早安", "isSet": 0, "sceneParams": { "params": { "sceneType": "MORNING", "isOpen": 0 } } }],
+    "groupInfo": {
+      "groupList": [{ "floorId": -1, "floorName": "默认楼层", "roomList": [
+        { "roomId": "room-bedroom", "roomName": "大卧室" }
+      ] }]
+    },
+    "unmappedServerField": { "retained": true }
+  }
+}

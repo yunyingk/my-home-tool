@@ -1,11 +1,16 @@
 {
   "name": "my-home-tool",
-  "module": "index.ts",
+  "module": "src/index.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "bun run index.ts",
+    "start": "bun run src/cli.ts",
+    "cli": "bun run src/cli.ts",
+    "test": "bun test",
     "typecheck": "tsc --noEmit"
+  },
+  "exports": {
+    ".": "./src/index.ts"
   },
   "devDependencies": {
     "@types/bun": "latest"

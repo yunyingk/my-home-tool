@@ -1,0 +1,14 @@
+{
+  "status": 0, "msg": "",
+  "data": {
+    "deviceList": [{
+      "appliance_id": "ac-1", "friendly_name": "格力空调", "bot_name": "__speaker_ir__",
+      "appliance_types": ["AIR_CONDITION"], "is_reachable": "1", "group_name": "大卧室",
+      "actions": ["turnOn", "turnOff", "setMode"],
+      "additional_appliance_details": {
+        "client_id": "speaker-client-1",
+        "air_condition_support_attributes": [{ "mode": "0", "minT": "16", "maxT": "30", "minS": "0", "maxS": "3" }]
+      }
+    }]
+  }
+}

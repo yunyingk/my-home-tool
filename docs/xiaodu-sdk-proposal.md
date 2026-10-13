@@ -3,7 +3,7 @@
 日期：2026-10-13，Asia/Shanghai。
 项目：`/Users/yingqing/Workspace/my-home-tool`，Bun + TypeScript。
 目标：将自己账号下的官方网页操作封装为 AI agent 可调用的 SDK。
-状态：项目骨架已完成；核心 SDK 尚未实现，以下方案待确认。
+状态：用户已于 2026-10-13 明确确认实施；第一版完成情况见 [实施报告](./sdk-implementation.md)。以下正文保留方案交付时的调查结果与范围，历史的“待确认/未实施”表述按该时间点理解。
 
 ## 1. 结论与证据
 

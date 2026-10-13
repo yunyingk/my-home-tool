@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "executor": "Implemented SDK and Bun CLI using the current local session",
+  "speakerCount": 1,
+  "applianceCount": 1,
+  "roomCount": 3,
+  "houseCount": 1,
+  "bindingCount": 1,
+  "sceneCount": 4,
+  "configuredSceneCount": 0,
+  "preview": {
+    "verification": "request-construction-only",
+    "directive": "SetModeRequest"
+  },
+  "sdkRequests": [
+    {
+      "path": "/saiya/smarthome/appliance",
+      "operation": "GET_USER_ALL_APPLIANCES"
+    },
+    {
+      "path": "/saiya/smarthome/groupsystem",
+      "operation": "GROUP_INFO"
+    },
+    {
+      "path": "/saiya/smarthome/multihouse",
+      "operation": "HOUSE_LIST"
+    },
+    {
+      "path": "/saiya/smarthome/appliance",
+      "operation": "GET_USER_ALL_APPLIANCES"
+    },
+    {
+      "path": "/saiya/smarthome/config",
+      "operation": "GET_CLIENT_DETAILS"
+    },
+    {
+      "path": "/saiya/smarthome/appliance",
+      "operation": "GET_USER_ALL_APPLIANCES"
+    }
+  ],
+  "cliResults": [
+    {
+      "command": "devices",
+      "exitCode": 0,
+      "jsonOk": true
+    },
+    {
+      "command": "air <device-id> mode COOL --dry-run",
+      "exitCode": 0,
+      "jsonOk": true,
+      "verification": "request-construction-only"
+    }
+  ],
+  "deviceControlRequestsSent": 0
+}
