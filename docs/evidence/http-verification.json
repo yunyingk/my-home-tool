@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Asia/Shanghai",
+  "endpoint": "POST /saiya/smarthome/appliance",
+  "method": "GET_USER_ALL_APPLIANCES",
+  "executor": "Independent Bun process; no browser execution",
+  "results": [
+    {
+      "variant": "no-cookie",
+      "httpStatus": 200,
+      "status": 2,
+      "message": "not login",
+      "dataKeys": []
+    },
+    {
+      "variant": "browser-cookie",
+      "httpStatus": 200,
+      "status": 0,
+      "message": "",
+      "dataKeys": [
+        "isenable",
+        "restrictedRelayModes",
+        "appliances",
+        "irClient",
+        "client",
+        "sceneInfos",
+        "groupInfo",
+        "reqSign",
+        "reqTime",
+        "smartHousekeeperVisible",
+        "floorplanVisible",
+        "entryFooterList",
+        "entryPlusMenuList"
+      ],
+      "applianceCount": 1,
+      "speakerCount": 1,
+      "speakers": [
+        {
+          "name": "小度1s",
+          "product": "小度音箱1S遥控版",
+          "online": true
+        }
+      ],
+      "appliances": [
+        {
+          "name": "格力空调",
+          "supportActions": [
+            "turnOn",
+            "turnOff",
+            "setTemperature",
+            "incrementTemperature",
+            "decrementTemperature",
+            "setMode",
+            "setFanSpeed",
+            "incrementFanSpeed",
+            "decrementFanSpeed",
+            "timingTurnOn",
+            "timingTurnOff"
+          ]
+        }
+      ],
+      "configuredSceneCount": 0
+    },
+    {
+      "variant": "bduss-only",
+      "httpStatus": 200,
+      "status": 0,
+      "message": "",
+      "dataKeys": [
+        "isenable",
+        "restrictedRelayModes",
+        "appliances",
+        "irClient",
+        "client",
+        "sceneInfos",
+        "groupInfo",
+        "reqSign",
+        "reqTime",
+        "smartHousekeeperVisible",
+        "floorplanVisible",
+        "entryFooterList",
+        "entryPlusMenuList"
+      ],
+      "applianceCount": 1,
+      "speakerCount": 1,
+      "speakers": [
+        {
+          "name": "小度1s",
+          "product": "小度音箱1S遥控版",
+          "online": true
+        }
+      ],
+      "appliances": [
+        {
+          "name": "格力空调",
+          "supportActions": [
+            "turnOn",
+            "turnOff",
+            "setTemperature",
+            "incrementTemperature",
+            "decrementTemperature",
+            "setMode",
+            "setFanSpeed",
+            "incrementFanSpeed",
+            "decrementFanSpeed",
+            "timingTurnOn",
+            "timingTurnOff"
+          ]
+        }
+      ],
+      "configuredSceneCount": 0
+    },
+    {
+      "variant": "bduss-minimal",
+      "httpStatus": 200,
+      "status": 0,
+      "message": "",
+      "dataKeys": [
+        "isenable",
+        "restrictedRelayModes",
+        "appliances",
+        "irClient",
+        "client",
+        "sceneInfos",
+        "groupInfo",
+        "reqSign",
+        "reqTime",
+        "smartHousekeeperVisible",
+        "floorplanVisible",
+        "entryFooterList",
+        "entryPlusMenuList"
+      ],
+      "applianceCount": 1,
+      "speakerCount": 1,
+      "speakers": [
+        {
+          "name": "小度1s",
+          "product": "小度音箱1S遥控版",
+          "online": true
+        }
+      ],
+      "appliances": [
+        {
+          "name": "格力空调",
+          "supportActions": [
+            "turnOn",
+            "turnOff",
+            "setTemperature",
+            "incrementTemperature",
+            "decrementTemperature",
+            "setMode",
+            "setFanSpeed",
+            "incrementFanSpeed",
+            "decrementFanSpeed",
+            "timingTurnOn",
+            "timingTurnOff"
+          ]
+        }
+      ],
+      "configuredSceneCount": 0
+    }
+  ]
+}

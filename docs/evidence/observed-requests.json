@@ -1,0 +1,919 @@
+{
+  "date": "2026-10-13",
+  "requests": [
+    {
+      "label": "homepage-appliance",
+      "requestId": "27888.85",
+      "url": "https://xiaodu.baidu.com/saiya/smarthome/appliance",
+      "method": "POST",
+      "httpStatus": 200,
+      "requestBody": {
+        "enableCancelToken": true,
+        "method": "GET_USER_ALL_APPLIANCES",
+        "params": {
+          "from": "h5_control",
+          "withscene": 1,
+          "generalscene": 3,
+          "version": "2.0"
+        }
+      },
+      "response": {
+        "status": 0,
+        "msg": "",
+        "data": {
+          "isenable": true,
+          "restrictedRelayModes": [],
+          "appliances": [
+            {
+              "botName": "音箱自带红外遥控",
+              "cuid": "<redacted>",
+              "showPanel": true,
+              "botId": "__speaker_ir__",
+              "botLogo": "",
+              "num": "<redacted>",
+              "applianceId": "<redacted>",
+              "applianceTypes": [
+                "AIR_CONDITION"
+              ],
+              "nicknames": [],
+              "friendlyDescription": "小度音箱红外遥控器",
+              "guideline": "<redacted>",
+              "supportActions": [
+                "turnOn",
+                "turnOff",
+                "setTemperature",
+                "incrementTemperature",
+                "decrementTemperature",
+                "setMode",
+                "setFanSpeed",
+                "incrementFanSpeed",
+                "decrementFanSpeed",
+                "timingTurnOn",
+                "timingTurnOff"
+              ],
+              "panel": null,
+              "canDelete": 1,
+              "isIRMatch": true,
+              "isCloseIRCorrectTips": true,
+              "isNoStatusAirCondition": false,
+              "friendlyName": "格力空调",
+              "isClientOnline": true,
+              "clientName": "小度1s",
+              "clientId": "<redacted>",
+              "groupName": "大卧室",
+              "roomName": "大卧室",
+              "groupId": "<redacted>",
+              "roomId": "<redacted>",
+              "floorId": -1,
+              "floorName": "默认楼层",
+              "attributes": {
+                "turnOnState": {
+                  "detail": {
+                    "name": "开关",
+                    "range": {
+                      "ON": "打开",
+                      "on": "打开",
+                      "OFF": "关闭",
+                      "off": "关闭",
+                      "FAILED": "失败"
+                    }
+                  },
+                  "value": "OFF",
+                  "levelValueOrigin": "",
+                  "timestampOfSample": 1791870872
+                },
+                "temperature": {
+                  "detail": {
+                    "name": "温度",
+                    "scale": "度"
+                  },
+                  "value": "24",
+                  "levelValueOrigin": "",
+                  "timestampOfSample": 1791131701
+                },
+                "mode": {
+                  "detail": {
+                    "name": "模式"
+                  },
+                  "value": "制冷",
+                  "levelValueOrigin": "",
+                  "timestampOfSample": 1787751811
+                },
+                "fanSpeed": {
+                  "detail": {
+                    "name": "风速",
+                    "range": {
+                      "min": 0,
+                      "max": 10
+                    },
+                    "levelRange": {
+                      "low": "低风速",
+                      "middle_low": "中低风速",
+                      "middle": "中风速",
+                      "middle_high": "中高风速",
+                      "high": "高风速",
+                      "quite": "静音风",
+                      "powerful": "强力风"
+                    }
+                  },
+                  "value": "2",
+                  "levelValueOrigin": "",
+                  "timestampOfSample": 1787513564
+                }
+              },
+              "stateSetting": {
+                "turnOnState": {
+                  "name": "开关",
+                  "value": "OFF",
+                  "valueType": "ENUM",
+                  "scale": "",
+                  "valueRangeMap": {
+                    "ON": "打开",
+                    "OFF": "关闭"
+                  },
+                  "time": "2026-10-13 13:54:32"
+                },
+                "temperature": {
+                  "name": "温度",
+                  "value": 24,
+                  "valueType": "NUM",
+                  "scale": "℃",
+                  "valueRangeMap": {
+                    "min": 0,
+                    "max": 60
+                  },
+                  "time": "2026-10-05 00:35:01",
+                  "key": "temperature"
+                },
+                "mode": {
+                  "name": "模式",
+                  "value": "COOL",
+                  "valueType": "ENUM",
+                  "scale": "",
+                  "valueRangeMap": {
+                    "COOL": "制冷",
+                    "HEAT": "制热",
+                    "AUTO": "自动",
+                    "FAN": "送风",
+                    "DEHUMIDIFICATION": "除湿",
+                    "SLEEP": "睡眠"
+                  },
+                  "time": "2026-08-26 21:43:31"
+                },
+                "fanSpeed": {
+                  "name": "风速",
+                  "value": 2,
+                  "valueType": "NUM",
+                  "scale": "",
+                  "valueRangeMap": {
+                    "min": 0,
+                    "max": 3
+                  },
+                  "time": "2026-08-24 03:32:44"
+                }
+              },
+              "userSetting": {},
+              "controlType": 0,
+              "icons": {
+                "first": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/device_icons/png3.0/AIR_CONDITION.png"
+              },
+              "status": "已关闭",
+              "ctime": "1787513564",
+              "gtime": "",
+              "airConditionSupportAttributes": [
+                {
+                  "mode": "COOL",
+                  "minTemperature": "16",
+                  "minFanSpeed": "0",
+                  "maxTemperature": "30",
+                  "maxFanSpeed": "3"
+                },
+                {
+                  "mode": "HEAT",
+                  "minTemperature": "16",
+                  "minFanSpeed": "0",
+                  "maxTemperature": "30",
+                  "maxFanSpeed": "3"
+                },
+                {
+                  "mode": "AUTO",
+                  "minFanSpeed": "0",
+                  "maxFanSpeed": "3"
+                },
+                {
+                  "mode": "FAN",
+                  "minTemperature": "16",
+                  "minFanSpeed": "0",
+                  "maxTemperature": "30",
+                  "maxFanSpeed": "3"
+                },
+                {
+                  "mode": "DEHUMIDIFICATION",
+                  "minTemperature": "16",
+                  "minFanSpeed": "1",
+                  "maxTemperature": "30",
+                  "maxFanSpeed": "1"
+                }
+              ],
+              "isEnableSetGroup": true,
+              "isSupportLightAdapt": 0,
+              "isSupportWallSwitch": 0,
+              "editableInfo": {
+                "controlLog": -1
+              },
+              "needRequestDetail": false,
+              "vid": "",
+              "panels": [],
+              "isSupportIrLearn": false,
+              "deviceIndex": -1,
+              "deviceIndexList": []
+            }
+          ],
+          "irClient": [
+            {
+              "client_id": "<redacted>",
+              "cuid": "<redacted>",
+              "online_status": true,
+              "name": "小度1s",
+              "device_version": "2.30.8.20251105102700",
+              "isOwner": true,
+              "sn": "<redacted>",
+              "didp_version": "36",
+              "circleId": "<redacted>",
+              "isSupportCustomGateway": true,
+              "showCustomGateway": {
+                "gray": 1,
+                "online": 0
+              },
+              "screencast": true,
+              "ir": true,
+              "self_no_infrared": false,
+              "manu": "小度",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/DEVICE_ICON_2023/MAIN_DEVICE/1S.png",
+              "product": "小度音箱1S遥控版",
+              "sceneName": "loudspeaker",
+              "dciSensitivityType": "product",
+              "group_name": "大卧室",
+              "groupName": "大卧室",
+              "groupId": "<redacted>",
+              "floorId": -1,
+              "floorName": "默认楼层"
+            }
+          ],
+          "client": [
+            {
+              "client_id": "<redacted>",
+              "cuid": "<redacted>",
+              "online_status": true,
+              "name": "小度1s",
+              "device_version": "2.30.8.20251105102700",
+              "isOwner": true,
+              "sn": "<redacted>",
+              "didp_version": "36",
+              "circleId": "<redacted>",
+              "isSupportCustomGateway": true,
+              "showCustomGateway": {
+                "gray": 1,
+                "online": 0
+              },
+              "screencast": true,
+              "ir": true,
+              "self_no_infrared": false,
+              "manu": "小度",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/DEVICE_ICON_2023/MAIN_DEVICE/1S.png",
+              "product": "小度音箱1S遥控版",
+              "sceneName": "loudspeaker",
+              "dciSensitivityType": "product",
+              "group_name": "大卧室",
+              "groupName": "大卧室",
+              "groupId": "<redacted>",
+              "floorId": -1,
+              "floorName": "默认楼层",
+              "isCenterControlDevice": false,
+              "guideline": "<redacted>",
+              "screencast_need_ota": "no",
+              "show_device_online_alert_switch": 0,
+              "deviceIndex": -1,
+              "deviceIndexList": []
+            }
+          ],
+          "sceneInfos": [
+            {
+              "type": "MORNING",
+              "icon": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/SCENE_ICON_2023/MORNING_NOTSET.png",
+              "name": "早安",
+              "groupName": "",
+              "isSet": 0,
+              "sceneParams": {
+                "params": {
+                  "sceneType": "MORNING",
+                  "isOpen": 0
+                }
+              },
+              "trial": {
+                "trialParam": "/saiya/smarthome/unified",
+                "trialType": "triggerUrl"
+              }
+            },
+            {
+              "type": "SLEEP",
+              "icon": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/SCENE_ICON_2023/NIGHT_NOTSET.png",
+              "name": "睡眠",
+              "groupName": "",
+              "isSet": 0,
+              "sceneParams": {
+                "params": {
+                  "sceneType": "SLEEP",
+                  "isOpen": 0
+                }
+              },
+              "trial": {
+                "trialParam": "/saiya/smarthome/unified",
+                "trialType": "triggerUrl"
+              }
+            },
+            {
+              "type": "GO_HOME",
+              "icon": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/SCENE_ICON_2023/RETURN-NOTSET.png",
+              "name": "回家",
+              "groupName": "",
+              "isSet": 0,
+              "sceneParams": {
+                "params": {
+                  "sceneType": "GO_HOME",
+                  "isOpen": 0
+                }
+              },
+              "trial": {
+                "trialParam": "/saiya/smarthome/unified",
+                "trialType": "triggerUrl"
+              }
+            },
+            {
+              "type": "LEAVE_HOME",
+              "icon": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/ICON_2023/SCENE_ICON_2023/LEAVE_NOTSET.png",
+              "name": "离家",
+              "groupName": "",
+              "isSet": 0,
+              "sceneParams": {
+                "params": {
+                  "sceneType": "LEAVE_HOME",
+                  "isOpen": 0
+                }
+              },
+              "trial": {
+                "trialParam": "/saiya/smarthome/unified",
+                "trialType": "triggerUrl"
+              }
+            }
+          ],
+          "groupInfo": {
+            "newGroupSystem": 1,
+            "groupList": [
+              {
+                "floorId": -1,
+                "floorName": "默认楼层",
+                "index": 999,
+                "groupList": [
+                  {
+                    "groupId": "<redacted>",
+                    "groupName": "客厅",
+                    "index": 999,
+                    "applianceCount": 0,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  },
+                  {
+                    "groupId": "<redacted>",
+                    "groupName": "大卧室",
+                    "index": 999,
+                    "applianceCount": 2,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  },
+                  {
+                    "groupId": "<redacted>",
+                    "groupName": "默认房间",
+                    "index": 1000,
+                    "applianceCount": 0,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  }
+                ],
+                "roomList": [
+                  {
+                    "roomId": "<redacted>",
+                    "roomName": "客厅",
+                    "index": 999,
+                    "applianceCount": 0,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  },
+                  {
+                    "roomId": "<redacted>",
+                    "roomName": "大卧室",
+                    "index": 999,
+                    "applianceCount": 2,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  },
+                  {
+                    "roomId": "<redacted>",
+                    "roomName": "默认房间",
+                    "index": 1000,
+                    "applianceCount": 0,
+                    "sceneCount": 0,
+                    "keyCount": 0,
+                    "supportGroupControl": false
+                  }
+                ],
+                "applianceCount": 2,
+                "sceneCount": 0,
+                "keyCount": 0,
+                "lightCount": 0
+              }
+            ],
+            "defaultGroup": {}
+          },
+          "reqSign": "<redacted>",
+          "reqTime": 1791871316,
+          "smartHousekeeperVisible": true,
+          "floorplanVisible": false,
+          "entryFooterList": [
+            {
+              "key": "roomManage",
+              "name": "房间管理",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/common/room_management/room_manage__w67_h67_3K.7811ce5.png"
+            },
+            {
+              "key": "regularLight",
+              "name": "AI常用灯",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/common/regular_light/main_regular_light__w50_h36_0K.1edc200.png",
+              "dotVisible": false
+            }
+          ],
+          "entryPlusMenuList": [
+            {
+              "key": "addDevice",
+              "name": "添加设备",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/.trash/common/add-device__w116_h116_1K.7b66ca9.png"
+            },
+            {
+              "key": "applianceGroupGuide",
+              "name": "添加设备组",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/.trash/common/add-light-group__w116_h116_2K.30aa9bd.png"
+            },
+            {
+              "key": "sceneHouseSelection",
+              "name": "添加场景",
+              "image": "https://dumi-iot-bj-smarthome.cdn.bcebos.com/.trash/common/add-scene__w116_h116_1K.1abd120.png"
+            }
+          ]
+        },
+        "logId": 1161120081
+      }
+    },
+    {
+      "label": "homepage-multihouse",
+      "requestId": "27888.112",
+      "url": "https://xiaodu.baidu.com/saiya/smarthome/multihouse",
+      "method": "POST",
+      "httpStatus": 200,
+      "requestBody": {
+        "method": "HOUSE_LIST",
+        "params": {
+          "entityId": "",
+          "entityType": ""
+        }
+      },
+      "response": {
+        "status": 0,
+        "msg": "",
+        "data": {
+          "houseList": [
+            {
+              "id": "<redacted>",
+              "houseId": "<redacted>",
+              "houseName": "<redacted>",
+              "isDefault": true,
+              "isOwner": true,
+              "roomCount": 0,
+              "deviceCount": 0,
+              "isUpgrade": true,
+              "isSupportTrans": true
+            }
+          ]
+        },
+        "logId": 1647585842
+      }
+    },
+    {
+      "label": "homepage-groups",
+      "requestId": "27888.82",
+      "url": "https://xiaodu.baidu.com/saiya/smarthome/groupsystem?from=H5&method=GROUP_INFO",
+      "method": "GET",
+      "httpStatus": 200,
+      "response": {
+        "status": 0,
+        "msg": "",
+        "data": {
+          "isSupportMoveHouse": false,
+          "instructions": [],
+          "floorList": [
+            {
+              "floorId": -1,
+              "floorName": "默认楼层",
+              "index": 999,
+              "roomList": [
+                {
+                  "roomId": "<redacted>",
+                  "roomName": "客厅",
+                  "index": 999,
+                  "applianceCount": 0,
+                  "sceneCount": 0,
+                  "keyCount": 0,
+                  "supportGroupControl": false
+                },
+                {
+                  "roomId": "<redacted>",
+                  "roomName": "大卧室",
+                  "index": 999,
+                  "applianceCount": 2,
+                  "sceneCount": 0,
+                  "keyCount": 0,
+                  "supportGroupControl": false
+                },
+                {
+                  "roomId": "<redacted>",
+                  "roomName": "默认房间",
+                  "index": 1000,
+                  "applianceCount": 0,
+                  "sceneCount": 0,
+                  "keyCount": 0,
+                  "supportGroupControl": false
+                }
+              ],
+              "applianceCount": 2,
+              "sceneCount": 0,
+              "keyCount": 0,
+              "lightCount": 0
+            }
+          ],
+          "recommendedRoomList": [
+            {
+              "name": "客厅"
+            },
+            {
+              "name": "卧室"
+            },
+            {
+              "name": "主卧"
+            },
+            {
+              "name": "次卧"
+            },
+            {
+              "name": "餐厅"
+            },
+            {
+              "name": "厨房"
+            },
+            {
+              "name": "玄关"
+            },
+            {
+              "name": "门口"
+            },
+            {
+              "name": "洗手间"
+            },
+            {
+              "name": "浴室"
+            },
+            {
+              "name": "书房"
+            },
+            {
+              "name": "阳台"
+            },
+            {
+              "name": "儿童房"
+            },
+            {
+              "name": "客房"
+            },
+            {
+              "name": "老人房"
+            },
+            {
+              "name": "婴儿房"
+            },
+            {
+              "name": "过道"
+            },
+            {
+              "name": "走廊"
+            },
+            {
+              "name": "楼梯"
+            },
+            {
+              "name": "影音室"
+            },
+            {
+              "name": "吧台"
+            },
+            {
+              "name": "茶室"
+            },
+            {
+              "name": "衣帽间"
+            },
+            {
+              "name": "办公室"
+            },
+            {
+              "name": "保姆房"
+            },
+            {
+              "name": "宠物房"
+            },
+            {
+              "name": "杂物间"
+            },
+            {
+              "name": "车库"
+            },
+            {
+              "name": "花园"
+            },
+            {
+              "name": "温室"
+            }
+          ],
+          "recommendedFloorList": [
+            {
+              "id": "<redacted>",
+              "title": "地上",
+              "list": [
+                {
+                  "name": "一层"
+                },
+                {
+                  "name": "二层"
+                },
+                {
+                  "name": "三层"
+                },
+                {
+                  "name": "四层"
+                },
+                {
+                  "name": "五层"
+                },
+                {
+                  "name": "六层"
+                },
+                {
+                  "name": "七层"
+                },
+                {
+                  "name": "八层"
+                },
+                {
+                  "name": "九层"
+                },
+                {
+                  "name": "十层"
+                },
+                {
+                  "name": "十一层"
+                },
+                {
+                  "name": "十二层"
+                }
+              ]
+            },
+            {
+              "id": "<redacted>",
+              "title": "地下",
+              "list": [
+                {
+                  "name": "一层"
+                },
+                {
+                  "name": "二层"
+                },
+                {
+                  "name": "三层"
+                },
+                {
+                  "name": "四层"
+                }
+              ]
+            }
+          ],
+          "deviceList": []
+        },
+        "logId": 2131693715
+      }
+    },
+    {
+      "label": "speaker-config",
+      "requestId": "27888.215",
+      "url": "https://xiaodu.baidu.com/saiya/smarthome/config",
+      "method": "POST",
+      "httpStatus": 200,
+      "requestBody": {
+        "method": "GET_CLIENT_DETAILS",
+        "params": {
+          "clientId": "<redacted>",
+          "version": 1,
+          "from": "h5"
+        }
+      },
+      "response": {
+        "status": 0,
+        "msg": "",
+        "data": {
+          "deviceList": [
+            {
+              "user_id": "<redacted>",
+              "cuid": "<redacted>",
+              "master_id": "<redacted>",
+              "bot_name": "__speaker_ir__",
+              "appliance_types": [
+                "AIR_CONDITION"
+              ],
+              "appliance_id": "<redacted>",
+              "manufacturer_name": "格力",
+              "model_name": "ir_speaker_air_condition",
+              "version": "1.0",
+              "friendly_name": "格力空调",
+              "nicknames": [],
+              "friendly_description": "小度音箱红外遥控器",
+              "is_reachable": "1",
+              "actions": [
+                "turnOn",
+                "turnOff",
+                "setTemperature",
+                "incrementTemperature",
+                "decrementTemperature",
+                "setMode",
+                "setFanSpeed",
+                "incrementFanSpeed",
+                "decrementFanSpeed"
+              ],
+              "additional_appliance_details": {
+                "from": "api",
+                "remote_id": 2582,
+                "remote_type": "2",
+                "client_id": "<redacted>",
+                "brand_id": 97,
+                "air_condition_support_attributes": [
+                  {
+                    "mode": "0",
+                    "minT": "16",
+                    "minS": "0",
+                    "maxT": "30",
+                    "maxS": "3"
+                  },
+                  {
+                    "mode": "1",
+                    "minT": "16",
+                    "minS": "0",
+                    "maxT": "30",
+                    "maxS": "3"
+                  },
+                  {
+                    "mode": "2",
+                    "minS": "0",
+                    "maxS": "3"
+                  },
+                  {
+                    "mode": "3",
+                    "minT": "16",
+                    "minS": "0",
+                    "maxT": "30",
+                    "maxS": "3"
+                  },
+                  {
+                    "mode": "4",
+                    "minT": "16",
+                    "minS": "1",
+                    "maxT": "30",
+                    "maxS": "1"
+                  }
+                ],
+                "close_ir_correct_tips": true
+              },
+              "edit_status": "2",
+              "is_delete": "0",
+              "room_id": "<redacted>",
+              "update_time": "1787513564",
+              "id": "<redacted>",
+              "create_time": "1787513564",
+              "parent_friendly_name": "",
+              "group_name": "大卧室",
+              "floor_name": "默认楼层",
+              "floor_id": -1,
+              "parent_group_name": "默认房间",
+              "parent_floor_name": "默认楼层",
+              "parent_room_id": "<redacted>",
+              "parent_floor_id": -1,
+              "gid": "<redacted>",
+              "gtime": 0,
+              "house_id": "<redacted>"
+            }
+          ],
+          "isSupportIrLearn": true,
+          "defaultBindDeviceTypes": [
+            {
+              "device_type_id": "1",
+              "device_type_name": "机顶盒",
+              "appliance_type": "SET_TOP_BOX",
+              "count": 0,
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/box.png",
+              "desc": "支持全国345个城市和地区的广电网络"
+            },
+            {
+              "device_type_id": "2",
+              "device_type_name": "电视",
+              "appliance_type": "TV_SET",
+              "appliance_type_filter": "SET_TOP_BOX",
+              "count": 0,
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/tv.png",
+              "desc": "支持创维、海信、索尼等370个品牌"
+            },
+            {
+              "device_type_id": "5",
+              "device_type_name": "空调",
+              "appliance_type": "AIR_CONDITION",
+              "count": 0,
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/air.png",
+              "desc": "支持美的、格力、海尔等231个品牌"
+            },
+            {
+              "device_type_id": "8",
+              "device_type_name": "风扇",
+              "appliance_type": "FAN",
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/fan2.png",
+              "desc": "支持美的、艾美特、格力等121个品牌"
+            },
+            {
+              "device_type_id": "3",
+              "device_type_name": "网络盒子",
+              "appliance_type": "OTT_BOX",
+              "count": 0,
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/oot-box.png",
+              "desc": "爱奇艺、小米、天猫魔盒等131个品牌"
+            },
+            {
+              "device_type_id": "6",
+              "device_type_name": "投影仪",
+              "appliance_type": "PROJECTOR",
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/projector.png",
+              "desc": "支持极米、松下、爱普生等106个品牌"
+            },
+            {
+              "device_type_id": "10",
+              "device_type_name": "通用开关家电",
+              "appliance_type": "TURN",
+              "noType": true,
+              "img": "https://duerstatic.cdn.bcebos.com/smarthome/config/commonDevice.png",
+              "desc": "支持灯、开关、空气净化器等15种家电"
+            }
+          ]
+        },
+        "logId": 1590922557
+      }
+    },
+    {
+      "label": "air-panel-unified",
+      "requestId": "27888.154",
+      "url": "https://xiaodu.baidu.com/saiya/smarthome/unified",
+      "method": "POST",
+      "httpStatus": 200,
+      "requestBody": {
+        "method": "applianceRelateScenes",
+        "from": "h5",
+        "params": {
+          "applianceId": "<redacted>",
+          "botId": "__speaker_ir__",
+          "h5TileFormate": true
+        }
+      },
+      "response": {
+        "status": 0,
+        "msg": "ok",
+        "logid": 1705341975,
+        "data": {}
+      }
+    }
+  ]
+}
