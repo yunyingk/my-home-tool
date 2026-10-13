@@ -2,7 +2,7 @@
 
 用 Bun + TypeScript 封装个人智能家居工具，供 AI agent 调用。
 
-当前发布版本：`0.1.0`，Git tag：`v0.1.0`；变更记录见 [CHANGELOG](CHANGELOG.md)。
+当前发布版本：`0.1.1`，Git tag：`v0.1.1`；变更记录见 [CHANGELOG](CHANGELOG.md)。
 
 当前状态：第一版 SDK 与 JSON CLI 已实现。只读查询通过当前账号的集成验证；空调控制通过请求组装测试和 dry-run，尚未进行实机控制验证。
 
@@ -39,8 +39,8 @@ bun test
 
 ## 版本与工具链
 
-- Bun 固定声明为本机版本 `1.3.14`，同时写入 `packageManager` 与 `engines.bun`。
-- 开发依赖使用精确版本：`@types/bun 1.4.3`、`typescript 5.9.3`。TypeScript 作为开发工具放入 `devDependencies`。
+- `engines.bun` 的兼容范围为 `1.3.*`；`packageManager` 记录本机使用的具体版本 `bun@1.3.14`。
+- 开发依赖使用精确版本：`@types/bun 1.3.14`、`typescript 5.9.3`。Bun 类型与本机运行时对齐；TypeScript 作为开发工具放入 `devDependencies`。
 - `bunfig.toml` 的 `install.exact = true` 使后续 `bun add` 默认保存精确版本；项目不使用 `latest`、`^`、`~` 或 `*` 声明直接依赖。
 - 第三方包声明的传递依赖范围保留原始元数据，实际解析版本由已提交的 `bun.lock` 固定；复现安装使用 `bun install --frozen-lockfile`。
 - `packageManager` 和 `engines` 是工具链声明，不会替你自动安装或切换本机 Bun；执行前可用 `bun --version` 核对。
